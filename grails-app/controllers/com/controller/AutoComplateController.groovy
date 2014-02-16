@@ -6,10 +6,10 @@ import com.grails.Domain.AutoComplate
 
 class AutoComplateController {
 
-    def index() { }
-	
+	def autoComplateService
+    
 	def autoComplate={
-		def names = AutoComplate.withCriteria {ilike 'name', params.term + '%'}
+		def names = autoComplateService.getAutoComplateName(params)
 		render (names?.'name' as JSON)
 	}
 }
